@@ -1,0 +1,5 @@
+gatego:0
+gate1=:0
+gate2=:0
+gate3=:0
+gate4=:0
