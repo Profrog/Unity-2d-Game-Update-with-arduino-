@@ -610,6 +610,33 @@ Transform:
   m_PrefabParentObject: {fileID: 4226020754862300, guid: fa58644623abe4c4584d85279466dd2f,
     type: 2}
   m_PrefabInternal: {fileID: 1298317071}
+--- !u!54 &196149257
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 196149255}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &196149258
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 196149255}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &309132909
 GameObject:
   m_ObjectHideFlags: 0
@@ -2146,9 +2173,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1174353813}
   - component: {fileID: 1174353817}
-  - component: {fileID: 1174353816}
   - component: {fileID: 1174353815}
   - component: {fileID: 1174353814}
+  - component: {fileID: 1174353818}
+  - component: {fileID: 1174353816}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -2204,13 +2232,12 @@ BoxCollider:
 --- !u!114 &1174353816
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114971918923142972, guid: 2b66550145b03284691fb01a1ea06a37,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1174353812}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 549984777f998fd4c9711a9b00e38089, type: 3}
+  m_Script: {fileID: 11500000, guid: b2f8310a4bf043045b75fdb000907bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1429369709289524, guid: db11f0707f833144989e747ccebe3e69, type: 2}
@@ -2223,7 +2250,6 @@ MonoBehaviour:
   X_value: 0
   Y_value: 0
   arduinoString: 
-  okay: 0
   showingDamage: {fileID: 1765950359}
   enemyDamage: 0.01
   slie1: {fileID: 432976878}
@@ -2270,6 +2296,17 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
+--- !u!114 &1174353818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1174353812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 624422655a10e19459bc9f1643125d01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1187120977
 GameObject:
   m_ObjectHideFlags: 0
@@ -2553,7 +2590,8 @@ Prefab:
       propertyPath: m_TagString
       value: enemy4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 61155214811285466, guid: fa58644623abe4c4584d85279466dd2f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fa58644623abe4c4584d85279466dd2f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1332813094
@@ -2954,7 +2992,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Size: {x: 0.2, y: 0.2, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &1413067792
 SpriteRenderer:

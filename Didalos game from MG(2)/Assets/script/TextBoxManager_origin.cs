@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
-using System.Diagnostics;
-using Debug = UnityEngine.Debug;
+
 
 public class TextBoxManager_origin : MonoBehaviour
 {
@@ -20,81 +19,57 @@ public class TextBoxManager_origin : MonoBehaviour
     public int endAtLine; //텍스트의 마지막 줄 넘버 -1.. 0부터 카운트 하니까
     public int check = 0;
 
-    public GameObject playerCharacter; //플레이어 캐릭터와 상호작용을 위해.
-    public GameObject enemyCharacter;// 보스 캐릭터와 상호작용을 위해
-    public GameObject checkingMouse;
-    private Stopwatch sw = new Stopwatch();
+    public GameObject playerCharacter; //플레이어 캐릭터와 상호작용을 위해. //for connectin with player
+    public GameObject enemyCharacter;// 보스 캐릭터와 상호작용을 위해 //wih bos
 
-    private int messageSize = 1;
+    private int messageSize = 2; //size of text
+   
 
     void Start()
     {
-        Debug.Log("currentLine" + currentLine);
+       // Debug.Log("currentLine" + currentLine);
         endAtLine = messageSize;
-        //textBox.SetActive(true);
+        textBox.SetActive(true);
 
-        playerCharacter.GetComponent<PlayerMovement>().isActive = false;
+        playerCharacter.GetComponent<NewBehaviourScript>().isActive = false;
         enemyCharacter.GetComponent<ShopManager>().isActive = false;
       
 
         if (textFile != null)
         {
-           // Debug.Log("text file" + textFile.ToString());
-            textLine = (textFile.text.Split('\n')); //textFile에 있는 줄 하나가 textLine이 된다.
+          textLine = (textFile.text.Split('\n')); //textFile에 있는 줄 하나가 textLine이 된다.
         }
 
         if (endAtLine == 0)
         {
             endAtLine = textLine.Length - 1;
         }
-
-        StreamReader sr = new StreamReader(Application.dataPath + "/Resources/" + "dialogCheck.txt");
-
-        //sr.ReadLine();
-        string line = sr.ReadLine();
-        //int lengthOfLine = line.Length;
-        string[] hpValue = line.Split(' ');
-        Debug.Log("file is" + "//" + hpValue[1]); //dialog 상태 체크하기 위한 것
-        check = int.Parse(hpValue[1]);
-        sr.Close();
-        sw.Start();
     }
 
     private void OnDisable() //start를 onenable로 바꿔도 각 isActive 영향을 끼쳐서 야매로 이 방법 사용.
     {
-        playerCharacter.GetComponent<PlayerMovement>().isActive = true;
+        playerCharacter.GetComponent<NewBehaviourScript>().isActive = true;
         enemyCharacter.GetComponent<ShopManager>().isActive = true;
     }
 
     private void Update()
     {
-        if (check == 0)
+
+        if (PlayerPrefs.GetInt("startDialog") < 1)
         {
-            //textBox.SetActive(false);
-            theText.text = textLine[currentLine];
+            if (currentLine < endAtLine)
+                theText.text = textLine[currentLine];
 
-            if (sw.ElapsedMilliseconds >= 200)
+
+            if (currentLine + 1 > endAtLine)
             {
-                sw.Reset();
-                sw.Start();
-                //speedCount = 7;
-                //okay = false; //initialing shooting
+                DisableTextBox();
 
-                //if (checkingMouse != null)
-                //checkingMouse.SetActive(false);
+            }
 
-                if (Input.GetAxis("Fire1") > 0)
-                {
-                    if (currentLine + 1 > endAtLine)
-                    {
-                        DisableTextBox();
-                        // JustDoIt.enabled = true;
-                    }
-
-
-                    else
-                        currentLine += 1; //왼쪽마우스를 누르면 케런트의 값이 1증가
-                }
+            else
+            {
+                checkingNext(); //if mean that checking and next text
             }
         }
 
@@ -103,14 +78,27 @@ public class TextBoxManager_origin : MonoBehaviour
         {
             DisableTextBox();
         }
-
-
+        
     }
 
-    public void EnableTextBox()
+
+    public void checkingNext() //
+    {
+        if (PlayerPrefs.GetInt("okay") >= 1)
+        {
+
+            if (currentLine < endAtLine)
+                currentLine += 1;
+
+            PlayerPrefs.SetInt("okay", 0);
+        }
+    }
+
+
+    public void EnableTextBox() //enter dialog
     {
         textBox.SetActive(true);
-        playerCharacter.GetComponent<PlayerMovement>().isActive = false;
+        playerCharacter.GetComponent<NewBehaviourScript>().isActive = false;
         enemyCharacter.GetComponent<ShopManager>().isActive = false;
 
     }
@@ -118,9 +106,9 @@ public class TextBoxManager_origin : MonoBehaviour
     public void DisableTextBox()
     {
        textBox.SetActive(false);
-        playerCharacter.GetComponent<PlayerMovement>().isActive = true; //플레이어 다시 움직일 수 있게 해주고
-        enemyCharacter.GetComponent<ShopManager>().isActive = true;
-
+       playerCharacter.GetComponent<NewBehaviourScript>().isActive = true; //플레이어 다시 움직일 수 있게 해주고 //dialog end
+       enemyCharacter.GetComponent<ShopManager>().isActive = true;
+       PlayerPrefs.SetInt("startDialog", 1);
     }
 
     public void ReloadScript(TextAsset theText)

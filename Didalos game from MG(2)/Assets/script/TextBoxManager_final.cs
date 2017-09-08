@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Diagnostics;
-using Debug = UnityEngine.Debug;
+
 
 public class TextBoxManager_final : MonoBehaviour
 {
@@ -20,13 +19,12 @@ public class TextBoxManager_final : MonoBehaviour
     public GameObject playerCharacter; //플레이어 캐릭터와 상호작용을 위해.
 
     public Text JustDoIt;
-    private Stopwatch sw = new Stopwatch();
   
 
     void Start()
     {
 
-        playerCharacter.GetComponent<PlayerMovement>().isActive = false;
+        playerCharacter.GetComponent<NewBehaviourScript>().isActive = false;
     
         if (textFile != null)
         {
@@ -38,49 +36,48 @@ public class TextBoxManager_final : MonoBehaviour
             endAtLine = textLine.Length - 1;
         }
 
-        sw.Start();
     }
+
 
     private void Update()
     {
 
-        if (sw.ElapsedMilliseconds >= 200)
-        {
-            sw.Reset();
-            sw.Start();
-            //speedCount = 7;
-            //okay = false; //initialing shooting
+       
+            if (currentLine < endAtLine)
+                theText.text = textLine[currentLine];
 
-            //if (checkingMouse != null)
-            //checkingMouse.SetActive(false);
-
-            if (Input.GetAxis("Fire1") > 0)
+            if (currentLine + 1 > endAtLine)
             {
-                if (currentLine + 1 > endAtLine)
-                {
-                    DisableTextBox();
-                    JustDoIt.enabled = true;
-                }
-
-
-                else
-                    currentLine += 1; //왼쪽마우스를 누르면 케런트의 값이 1증가
+                JustDoIt.enabled = true;
+                DisableTextBox();
             }
-        }
 
-
-        //textBox.SetActive(false);
-        theText.text = textLine[currentLine];
-
+            else
+            {
+                checkingNext(); //if mean that checking and next text
+            }
        
 
-       
     }
+
+
+    public void checkingNext() //
+    {
+        if (PlayerPrefs.GetInt("okay") >= 1)
+        {
+
+            if (currentLine < endAtLine)
+                currentLine += 1;
+
+            PlayerPrefs.SetInt("okay", 0);
+        }
+    }
+
 
     public void EnableTextBox()
     {
         textBox.SetActive(true);
-        playerCharacter.GetComponent<PlayerMovement>().isActive = false;
+        playerCharacter.GetComponent<NewBehaviourScript>().isActive = false;
      
 
     }
@@ -88,7 +85,7 @@ public class TextBoxManager_final : MonoBehaviour
     public void DisableTextBox()
     {
         textBox.SetActive(false);
-        playerCharacter.GetComponent<PlayerMovement>().isActive = true; //플레이어 다시 움직일 수 있게 해주고
+        playerCharacter.GetComponent<NewBehaviourScript>().isActive = true; //플레이어 다시 움직일 수 있게 해주고
       
 
     }

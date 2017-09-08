@@ -90,10 +90,12 @@
     <Compile Include="Assets\TengManage.cs" />
     <Compile Include="Assets\TentManage.cs" />
     <Compile Include="Assets\moving.cs" />
+    <Compile Include="Assets\playerMovement.cs" />
     <Compile Include="Assets\script\ActivateTextAtLine.cs" />
     <Compile Include="Assets\script\BoolFirstScene.cs" />
     <Compile Include="Assets\script\MainCamera.cs" />
     <Compile Include="Assets\script\MainCamera\NewBehaviourScript2.cs" />
+    <Compile Include="Assets\script\NewBehaviourScript.cs" />
     <Compile Include="Assets\script\PlayerMovement.cs" />
     <Compile Include="Assets\script\ShopManager.cs" />
     <Compile Include="Assets\script\TextBoxManager.cs" />
@@ -104,6 +106,7 @@
     <Compile Include="Assets\script\enemy\NewBehaviourScript1.cs" />
     <Compile Include="Assets\script\slide\NewBehaviourScript3.cs" />
     <Compile Include="Assets\shopManager.cs" />
+    <Compile Include="Assets\tentManaging.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\dialogCheck.txt" />

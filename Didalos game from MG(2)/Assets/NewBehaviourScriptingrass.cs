@@ -4,31 +4,14 @@ using UnityEngine;
 
 public class NewBehaviourScriptingrass : MonoBehaviour {
 
-    public float hpValue = 0;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-
-	// Update is called once per frame
-	void Update () { 
-
-    }
-
-    
 
     public void OnTriggerStay(Collider coll)
     {
 
-        if (coll.gameObject.tag == "attack2")
+        if (coll.gameObject.tag == "attack2")  //guard enemy attack
         {
             coll.gameObject.SetActive(false);
 
         }
     }
-
-   
-
 }

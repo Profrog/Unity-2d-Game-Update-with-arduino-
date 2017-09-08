@@ -2359,7 +2359,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forDestoring: {fileID: 0}
   forTest1: startHouse
-  checkingDialog: {fileID: 0}
 --- !u!65 &1164744524
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3038,7 +3037,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forDestoring: {fileID: 0}
   forTest1: a4
-  checkingDialog: {fileID: 0}
 --- !u!65 &1287725567
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4248,9 +4246,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1828833931}
   - component: {fileID: 1828833935}
-  - component: {fileID: 1828833934}
   - component: {fileID: 1828833933}
   - component: {fileID: 1828833932}
+  - component: {fileID: 1828833936}
+  - component: {fileID: 1828833934}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -4306,18 +4305,17 @@ BoxCollider:
 --- !u!114 &1828833934
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114975122920116500, guid: 6a4e98e7c3b78c542b21296df054b31d,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1828833930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 549984777f998fd4c9711a9b00e38089, type: 3}
+  m_Script: {fileID: 11500000, guid: b2f8310a4bf043045b75fdb000907bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1429369709289524, guid: db11f0707f833144989e747ccebe3e69, type: 2}
   sndEXP: {fileID: 8300000, guid: fa4adc323f3a29146b1a7c100a8b17cd, type: 3}
-  message: {fileID: 1658577835}
+  message: {fileID: 0}
   message2: {fileID: 0}
   message3: {fileID: 0}
   enemy: {fileID: 0}
@@ -4325,10 +4323,8 @@ MonoBehaviour:
   X_value: 0
   Y_value: 0
   arduinoString: 
-  okay: 0
   showingDamage: {fileID: 0}
   enemyDamage: 1
-  checkingMouse: {fileID: 0}
   slie1: {fileID: 1206149019}
   isActive: 1
 --- !u!212 &1828833935
@@ -4373,6 +4369,17 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
+--- !u!114 &1828833936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1828833930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 624422655a10e19459bc9f1643125d01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1889309790
 GameObject:
   m_ObjectHideFlags: 0

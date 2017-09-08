@@ -27,11 +27,12 @@ public class NewBehaviourScript1 : MonoBehaviour
     bool shootchecking = true;
     public float damage = 1;
     public float PlayerDamage = 0.1f;
-
+    private int bulletCount = 5;
+    public bool isActive = true;
 
     public Slider slie1;
 
-    public bool isActive = true;
+
 
     void getting(string sending)
     {
@@ -44,20 +45,20 @@ public class NewBehaviourScript1 : MonoBehaviour
 
         player = new Vector3(X, Y, Z);
         Debug.Log("enemy" + liney);
-    
+
     }
 
 
     public void makingbullet_()//총알 생성
     {
-        bullet1 = new GameObject[100];
+        bullet1 = new GameObject[bulletCount];
         GameObject gameobj = Instantiate(bullet, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
         gameobj.SetActive(false);
 
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < bulletCount; i++)
         {
             bullet1[i] = Instantiate(bullet, gameObject.transform.position, gameObject.transform.rotation) as GameObject;
-            //bullet1[i].transform.parent = gameObject.transform;
+            // bullet1[i].transform.parent = gameObject.transform;
             bullet1[i].SetActive(false);
         }
 
@@ -68,7 +69,7 @@ public class NewBehaviourScript1 : MonoBehaviour
     {
         if (shootchecking)
         {
-            if (count < 100)
+            if (count < bulletCount)
             {
                 //Debug.Log(count);
                 bullet1[count].transform.position = gameObject.transform.position;
@@ -104,24 +105,25 @@ public class NewBehaviourScript1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (!isActive)
         {
             return;
         }
-        else
-        {
-            timer();
-            settingPosition();
 
-            if (slie1.value <= 0)
-            {
-                showingDamage.text = "";
-            }
+
+
+        timer();
+        settingPosition();
+
+        if (slie1.value <= 0)
+        {
+            showingDamage.text = "";
         }
     }
 
 
-     private void timer()
+    private void timer()
     {
         if (sw.ElapsedMilliseconds >= 500)
         {
@@ -158,18 +160,19 @@ public class NewBehaviourScript1 : MonoBehaviour
     {
         slie1.transform.position = gameObject.transform.position;
         slie1.transform.position += new Vector3(0, 0.2f, 0);
-        showingDamage.transform.position = gameObject.transform.position + new Vector3(0,0,-3f);
-       
+        showingDamage.transform.position = gameObject.transform.position + new Vector3(0, 0, -3f);
+
         //showingDamage.transform.position = new Vector3(0, 6f, 0);
     }
 
 
-   void OnTriggerStay2D(Collider2D coll)
-    { 
+    void OnTriggerStay(Collider coll)
+    {
+
         if (coll.gameObject.tag == "attack1")
         {
-            if(slie1.value > 0)
-            slie1.value -= PlayerDamage;
+            if (slie1.value > 0)
+                slie1.value -= PlayerDamage;
             showingDamage.text = PlayerDamage.ToString();
         }
     }

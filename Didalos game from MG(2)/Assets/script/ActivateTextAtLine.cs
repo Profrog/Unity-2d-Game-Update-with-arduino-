@@ -28,21 +28,8 @@ public class ActivateTextAtLine : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collision)
     {
-        if(collision.tag =="Player")
+        if(collision.tag =="Player")  //it is about dialog
         {
-
-            StreamReader sr = new StreamReader(Application.dataPath + "/Resources/" + "dialogCheck.txt");
-
-            //sr.ReadLine();
-            string line = sr.ReadLine();
-            //int lengthOfLine = line.Length;
-            string[] hpValue = line.Split(' ');
-            Debug.Log("file is" + "//" + hpValue[1]); //dialog 상태 체크하기 위한 것
-            int check1 = int.Parse(hpValue[1]);
-            sr.Close();
-
-            if (check1 == 0)
-            {
                 if (firstMeet)
                 {
                     theTextBox.ReloadScript(theText);
@@ -63,13 +50,5 @@ public class ActivateTextAtLine : MonoBehaviour {
 
                 }
             }
-
-
-            else
-            {
-                theTextBox.check = check1;
-            }
-                
-        }
     }
 }

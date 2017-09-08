@@ -4,7 +4,7 @@ using System;
 using System.IO;
 using System.IO.Ports;
 using UnityEngine;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine.UI;
 using System.Diagnostics;
 using Debug = UnityEngine.Debug;

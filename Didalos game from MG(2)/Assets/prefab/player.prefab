@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4581772621704732}
   - component: {fileID: 212786735335863434}
-  - component: {fileID: 114863992139496142}
   - component: {fileID: 65242260285934580}
   - component: {fileID: 54021356404603446}
+  - component: {fileID: 114708451910883724}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -233,7 +233,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114863992139496142
+--- !u!114 &114708451910883724
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -241,11 +241,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1209759389096310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 549984777f998fd4c9711a9b00e38089, type: 3}
+  m_Script: {fileID: 11500000, guid: b2f8310a4bf043045b75fdb000907bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1429369709289524, guid: db11f0707f833144989e747ccebe3e69, type: 2}
-  sndEXP: {fileID: 8300000, guid: fa4adc323f3a29146b1a7c100a8b17cd, type: 3}
+  bullet: {fileID: 0}
+  sndEXP: {fileID: 0}
   message: {fileID: 0}
   message2: {fileID: 0}
   message3: {fileID: 0}
@@ -255,7 +255,11 @@ MonoBehaviour:
   Y_value: 0
   arduinoString: 
   okay: 0
+  showingDamage: {fileID: 0}
+  enemyDamage: 1
   slie1: {fileID: 0}
+  bullyMan: {fileID: 0}
+  isActive: 1
 --- !u!212 &212111678657384970
 SpriteRenderer:
   m_ObjectHideFlags: 1

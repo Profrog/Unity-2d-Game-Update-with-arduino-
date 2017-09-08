@@ -5,7 +5,8 @@ using System.IO;
 using System;
 using Debug = UnityEngine.Debug;
 
-public class TentManage : MonoBehaviour {
+public class TentManage : MonoBehaviour
+{
 
 
     //public GameObject tent1;
@@ -36,21 +37,23 @@ public class TentManage : MonoBehaviour {
     }
 
 
-   
 
-    void Start () {
+
+    void Start()
+    {
         string t = "";
-        sr = new StreamReader(Application.dataPath + "/Resources/" + "tentState.txt");
+        //sr = new StreamReader(Application.dataPath + "/Resources/" + "tentState.txt");
 
-        sr.ReadLine();
-        for(int i = 1; i <= 4; i++)
+        //sr.ReadLine();
+        for (int i = 1; i <= 4; i++)
         {
-            string line = sr.ReadLine();
-            string[] liney = line.Split(':');
-            int check1 = Int32.Parse(liney[1]);
-
+            //string line = sr.ReadLine();
+            //string[] liney = line.Split(':');
+            string tagging1 = "gate" + i.ToString();
+            int check1 = PlayerPrefs.GetInt(tagging1);
             Debug.Log("linelineQQ" + i + check1);
 
+            /*
             switch (i)
             {
                 case 1:
@@ -72,13 +75,15 @@ public class TentManage : MonoBehaviour {
                     break;
 
             }
+            */
+
         }
-   
+
         //int lengthOfLine = line.Length;
         //string[] hpValue = line.Split(' ');
         //Debug.Log("file is in Tent" + "//" + line);
         //slie1.value = float.Parse(hpValue[1]);
-        sr.Close();
+        //sr.Close();
     }
 
 }

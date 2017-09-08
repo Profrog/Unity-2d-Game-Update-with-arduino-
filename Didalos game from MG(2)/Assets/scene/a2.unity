@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1057,6 +1057,7 @@ GameObject:
   - component: {fileID: 404081825}
   - component: {fileID: 404081824}
   - component: {fileID: 404081823}
+  - component: {fileID: 404081826}
   - component: {fileID: 404081822}
   m_Layer: 0
   m_Name: Enemy
@@ -1065,32 +1066,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &404081822
-BoxCollider2D:
+--- !u!65 &404081822
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 61279410219132526, guid: 2b66550145b03284691fb01a1ea06a37,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 404081821}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &404081823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1109,8 +1096,8 @@ MonoBehaviour:
   sndEXP2: {fileID: 8300000, guid: e72c3d95c944e094a95edb8c757bb14f, type: 3}
   damage: 5
   PlayerDamage: 0.0005
-  slie1: {fileID: 212617386}
   isActive: 1
+  slie1: {fileID: 212617386}
 --- !u!212 &404081824
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1169,6 +1156,21 @@ Transform:
   m_Father: {fileID: 1548536258}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &404081826
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 404081821}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &405328830
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,7 +2130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13794881ffc1b2c4481d371fd6eb0a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpValue: 0
 --- !u!65 &999884481
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2247,7 +2248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13794881ffc1b2c4481d371fd6eb0a07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpValue: 0
 --- !u!65 &1034699459
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3642,7 +3642,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5, z: 1}
+  m_Size: {x: 0.2, y: 0.2, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &1786592422
 SpriteRenderer:
@@ -4070,9 +4070,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2006043398}
   - component: {fileID: 2006043402}
-  - component: {fileID: 2006043401}
   - component: {fileID: 2006043400}
   - component: {fileID: 2006043399}
+  - component: {fileID: 2006043403}
+  - component: {fileID: 2006043401}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -4129,13 +4130,12 @@ BoxCollider:
 --- !u!114 &2006043401
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114971918923142972, guid: 2b66550145b03284691fb01a1ea06a37,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2006043397}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 549984777f998fd4c9711a9b00e38089, type: 3}
+  m_Script: {fileID: 11500000, guid: b2f8310a4bf043045b75fdb000907bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1429369709289524, guid: db11f0707f833144989e747ccebe3e69, type: 2}
@@ -4148,7 +4148,6 @@ MonoBehaviour:
   X_value: 0
   Y_value: 0
   arduinoString: 
-  okay: 0
   showingDamage: {fileID: 1618952331}
   enemyDamage: 0.01
   slie1: {fileID: 2055582442}
@@ -4195,6 +4194,17 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
+--- !u!114 &2006043403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2006043397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 624422655a10e19459bc9f1643125d01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2055582441
 Prefab:
   m_ObjectHideFlags: 0

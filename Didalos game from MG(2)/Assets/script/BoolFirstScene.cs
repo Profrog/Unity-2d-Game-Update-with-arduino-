@@ -8,17 +8,11 @@ public class BoolFirstScene : MonoBehaviour {
 
 	void Start () {
 
-        if (PlayerPrefs.GetInt("FirstScene") == 2)
+        if (PlayerPrefs.GetInt("FirstScene") >= 2) //go same scene two times, dialog end
         {
             gameObject.SetActive(false);
             textManager.GetComponent<TextBoxManager_origin>().enabled = false;
-            Debug.Log("PlayerPrefs.GetInt" + PlayerPrefs.GetInt("FirstScene"));
+            //Debug.Log("PlayerPrefs.GetInt" + PlayerPrefs.GetInt("FirstScene"));
         }
-
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }
