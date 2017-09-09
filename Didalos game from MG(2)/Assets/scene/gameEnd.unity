@@ -2296,7 +2296,7 @@ GameObject:
   - component: {fileID: 1164744522}
   - component: {fileID: 1164744521}
   m_Layer: 0
-  m_Name: Tent
+  m_Name: reStart
   m_TagString: tent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2974,7 +2974,7 @@ GameObject:
   - component: {fileID: 1287725565}
   - component: {fileID: 1287725564}
   m_Layer: 0
-  m_Name: Tent2
+  m_Name: gameEnd
   m_TagString: tent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3036,7 +3036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forDestoring: {fileID: 0}
-  forTest1: a4
+  forTest1: title
 --- !u!65 &1287725567
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4380,6 +4380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624422655a10e19459bc9f1643125d01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
 --- !u!1 &1889309790
 GameObject:
   m_ObjectHideFlags: 0

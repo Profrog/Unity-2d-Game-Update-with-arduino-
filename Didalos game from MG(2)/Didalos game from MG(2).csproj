@@ -107,6 +107,7 @@
     <Compile Include="Assets\script\slide\NewBehaviourScript3.cs" />
     <Compile Include="Assets\shopManager.cs" />
     <Compile Include="Assets\tentManaging.cs" />
+    <Compile Include="Assets\titleControlling.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\dialogCheck.txt" />
